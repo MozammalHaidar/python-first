@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JavaScript (optional, for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body{
+            margin-top: 20px;
+            padding:60px;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            font-family: Inter;
+            background: #ECECEC;
+            font-size: 22px;
+            /* color: #2D2A32; */
+        } 
+        input{
+            width: 510px;
+            height:40px;
+            color:#4A4A48;
+        }
+        .btn{
+            background: #FF6F61;
+        }
+        .btn:hover{
+            background: #D96B5D;
+        }
+        a{
+            text-decoration: none;
+        }
+        h1{
+            color:#2D2A32;
+        }
+       
+    </style>
+</head>
+<body>
+
+    <div class="container">   
+        <h1 class="text-center">Data entry form:</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Enter your name" required><br><br>
+            <input type="email" name="email" placeholder="Enter your email"><br><br>
+            <input type="file" name="file" placeholder="Enter image"><br><br>
+            <input type="number" name="roll" placeholder="Enter your roll" required><br><br>
+            <input type="gender" name="gender" placeholder="Enter your gender" required><br><br>
+            <input type="text" name="religion" placeholder="Enter your religion" required><br><br>
+            <input type="text" name="country" placeholder="Enter your country" required><br><br>
+            <input type="date" name="dob" placeholder="Enter your dob" required><br><br>
+            <input type="number" name="age" placeholder="Enter your age" required><br><br>
+            <button class="btn btn-success">Submit</button>
+        </form>
+        <br>
+        <button class="btn border-none"><a class="text-white" href="{% url 'first' %}">Go to data page</a></button><br><br><br>
+    </div>
+      
+</body>
+</html>

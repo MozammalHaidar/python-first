@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            padding:40px;
+            font-family: Inter;
+            background: #ECECEC;
+            color: #2D2A32;
+        }
+        a{
+            text-decoration: none;
+        }
+        .btn{
+            margin-top: 30px;
+            margin-left: 45%;
+            background: #FF6F61;
+        }
+        .btn:hover{
+            background: #D96B5D;
+        }
+        table{
+            width:70%;
+            margin-left:20%;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container "> 
+    <!-- {% for i in all_person %}
+    {{i.first_name}} {{i.last_name}}---<img style="height:70px;width:70px" src="{{i.image.url}}"alt="">-----{{i.course}}--- {{i.age}}----{{i.occupation}}<br>  
+    {% endfor %}
+    <br>    -->
+    <h1 class="text-center text-[#2D2A32]">All Student Data:</h1>
+    <table border = "1" cellpadding = "10">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Photo</th>
+            <th>email</th>
+            <th>roll</th>
+            <th>gender</th>
+            <th>religion</th>
+            <th>dob</th>
+            <th>country</th>
+        </tr>
+        {% for i in all_student%}
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.photo}}</td>
+            <td>{{i.age}}</td>
+            <td>{{i.roll}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.religion}}</td>
+            <td>{{i.is_Bangladeshi}}</td>
+            <td>{{i.date_of_birth}}</td>
+            <td><img style="height:80px;width:80px; border-radius:10px" src="{{i.image.url}}"alt=""></td>
+        </tr>
+        {% endfor %}  
+    </table>
+    <button class="btn border-none"><a class="text-white" href="{% url 'exam' %}">Go to form page</a></button><br><br><br>
+</div>
+
+<!-- Bootstrap JavaScript (optional, for interactive components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html
