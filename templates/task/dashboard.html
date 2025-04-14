@@ -1,0 +1,111 @@
+{% extends 'task/base.html' %}
+{% load static %}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<h2>📊 Dashboard</h2>
+
+<!-- Stats Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total Tasks</h5>
+                <p class="card-text fs-4">{{ total }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Completed</h5>
+                <p class="card-text fs-4">{{ completed }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-warning">
+            <div class="card-body">
+                <h5 class="card-title">Pending</h5>
+                <p class="card-text fs-4">{{ pending }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-danger">
+            <div class="card-body">
+                <h5 class="card-title">Overdue</h5>
+                <p class="card-text fs-4">{{ overdue }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Progress Section -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Task Completion</h5>
+        <p class="card-text">You've completed <strong>{{ percent_done }}%</strong> of your tasks.</p>
+        <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar"
+                 style="width: {{ percent_done }}%;" 
+                 aria-valuenow="{{ percent_done }}" 
+                 aria-valuemin="0" aria-valuemax="100">
+                {{ percent_done }}%
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filter Buttons -->
+<div class="mb-3">
+    <a href="?status=all" class="btn btn-outline-primary {% if status == 'all' %}active{% endif %}">All</a>
+    <a href="?status=pending" class="btn btn-outline-warning {% if status == 'pending' %}active{% endif %}">Pending</a>
+    <a href="?status=completed" class="btn btn-outline-success {% if status == 'completed' %}active{% endif %}">Completed</a>
+</div>
+
+<!-- Task List Table -->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Tasks</h5>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Due</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.category }}</td>
+                    <td>{{ task.due_date }}</td>
+                    <td>{{ task.get_priority_display }}</td>
+                    <td>
+                        {% if task.is_completed %}
+                            <span class="badge bg-success">Completed</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5">No tasks found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+
+

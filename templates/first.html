@@ -29,8 +29,8 @@
             background: #D96B5D;
         }
         table{
-            width:70%;
-            margin-left:20%;
+            width:90%;
+            margin-left:10%;
             margin-top: 30px;
             font-size: 20px;
         }
@@ -47,25 +47,25 @@
         <tr>
             <th>Name</th>
             <th>Age</th>
+            <th>Email</th>
+            <th>Roll</th>
+            <th>Gender</th>
+            <th>Religion</th>
+            <th>Is Bangladeshi</th>
+            <th>Birth date</th>
             <th>Photo</th>
-            <th>email</th>
-            <th>roll</th>
-            <th>gender</th>
-            <th>religion</th>
-            <th>dob</th>
-            <th>country</th>
         </tr>
         {% for i in all_student%}
         <tr>
             <td>{{i.name}}</td>
-            <td>{{i.email}}</td>
-            <td>{{i.photo}}</td>
             <td>{{i.age}}</td>
+            <td>{{i.email}}</td>
             <td>{{i.roll}}</td>
             <td>{{i.gender}}</td>
             <td>{{i.religion}}</td>
             <td>{{i.is_Bangladeshi}}</td>
             <td>{{i.date_of_birth}}</td>
+            <td>{{i.photo}}</td>
             <td><img style="height:80px;width:80px; border-radius:10px" src="{{i.image.url}}"alt=""></td>
         </tr>
         {% endfor %}  
